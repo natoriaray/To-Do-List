@@ -3,10 +3,14 @@ var newDiv;
 var newBtn;
 var newPara;
 var paraText;
+var newLabel
 var btnText;
 var newText;
+var newInput;
+var newSpan;
 var paraText;
 var tagNumber = 0;
+
 //use the tagnumbers to delete a div 
 var deleteDiv = function() {
   
@@ -20,6 +24,7 @@ var deleteDiv = function() {
 function getInput() { 
   newInput = document.getElementById("input").value;
   document.getElementById("input").value = "";
+  console.log(newInput)
   return newInput;
 }
 
@@ -29,18 +34,30 @@ function addToList() {
   } else {
     newText = getInput();
     newDiv = document.createElement("div");
+    newDiv.classList.add("itemsContainer");
+    
+    newLabel = document.createElement("label");
+    newLabel.classList.add("listItem");
+    newInput = document.createElement("input");
+    newInput.classList.add("checkbox");
+    newInput.setAttribute("type", "checkbox")
+    newLabel.appendChild(newInput);
+    newSpan = document.createElement("span");
+    newSpan.classList.add("checkmark");
+    newLabel.appendChild(newSpan);
+    newPara = document.createElement("p");
+    paraText = document.createTextNode(newText);
+    newPara.appendChild(paraText);
+    newLabel.appendChild(newPara);
+    newDiv.appendChild(newLabel);
+    
 
     newBtn = document.createElement("button");
     btnText = document.createTextNode("X");
+    newBtn.classList.add("deleteButton");
     newBtn.appendChild(btnText);
-
-    newPara = document.createElement("p");
-    paraText = document.createTextNode(newText);
-    newPara.appendChild(paraText)
-
-    newDiv.appendChild(newPara)
     newDiv.appendChild(newBtn)
-    newDiv.classList.add("listItem"); //it will get styled correctly
+    
     
    //tag the new div with a number identifier
     tagNumber = Number(tagNumber) + 1;
@@ -51,7 +68,6 @@ function addToList() {
     //add completed div to webpage
     newBtn.addEventListener('click', deleteDiv)
     document.getElementById("list").appendChild(newDiv)
-  
     
   }
 }
