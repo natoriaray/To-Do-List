@@ -1,5 +1,5 @@
 body {
-  background-color: #de5f5f;
+  background-color: #fefae0;
 }
 
 .container {
@@ -9,6 +9,7 @@ body {
 }
 
 h1 {
+  color: #d4a373;
   text-align: center;
   font-size: 50px;
 }
@@ -16,7 +17,7 @@ h1 {
 .input {
   display: flex;
   margin-top: 50px;
-  background-color: #fae8e8;
+  background-color: #d4a373;;
   height: 50px;
   justify-content: space-between;
   padding: 5px;
@@ -36,15 +37,21 @@ h1 {
 }
 
 .listItem {
-  background-color: #f1bbbb;
+  background-color: #faedcd;
   display: flex;
-  justify-content: space-between;
   margin-bottom: 10px;
   height: 50px;
+  width: 100%;
+  border-radius: 10px;
+  align-items: center;
 }
 
 p {
-  padding-left: 5px; 
+  padding-left: 15px; 
+  font-size: 20px;
+  height: 20px;
+  width: 500px;
+  padding-bottom: 5px;
 }
 
 .completedListItem {
@@ -54,3 +61,62 @@ p {
   margin-bottom: 10px;
   height: 50px;
 }
+
+.deleteButton {
+  background-color: #d4a373;
+  height: 30px;
+  margin-left: 10px;
+  margin-bottom: 10px; 
+  border-radius: 4px;
+}
+
+.itemsContainer {
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  background-color: #fefae0;
+  border-style: solid;
+  border-color: #d4a373;
+  border-width: medium;
+  margin-left: 10px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  width: 5px;
+  height: 12px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+input[type="checkbox"]:checked + .checkmark::after {
+  opacity: 1;
+}
+
+input[type="checkbox"]:checked + .checkmark {
+  background-color: #d4a373;
+}
+
+.completedCheckmark {
+  
+}
+
+.completedInput {
+  text-decoration-line: line-through; 
+}
+
