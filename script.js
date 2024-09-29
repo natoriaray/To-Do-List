@@ -11,17 +11,26 @@ var newSpan;
 var paraText;
 var tagNumber = 0;
 
+var addToCompleted = function() {
+  var thisSpanId = this.id;
+  var divId = this.id - 1.1;
+  var completedDiv = document.getElementById(divId);
+  
+  document.getElementById("completedList").appendChild(completedDiv);
+  
+  console.log(completedDiv)
+  //this.
+}
+
 //use the tagnumbers to delete a div 
 var deleteDiv = function() {
-  
   var thisBtnId = this.id;
   var divId = this.id - 1;
   
   document.getElementById(divId).remove();
 }
 
-
-function getInput() { 
+var getInput = function() { 
   newInput = document.getElementById("input").value;
   document.getElementById("input").value = "";
   console.log(newInput)
@@ -62,11 +71,14 @@ function addToList() {
    //tag the new div with a number identifier
     tagNumber = Number(tagNumber) + 1;
     newDiv.id = tagNumber;
-    newBtn.id = Number(newDiv.id) + 1;
+    newBtn.id = Number(newDiv.id) + 1; //used when div in deleted
+    newSpan.id = Number(newBtn.id) + 0.1; //used to move div to completed list
+    
     tagNumber = Number(tagNumber) + 1;
     
     //add completed div to webpage
     newBtn.addEventListener('click', deleteDiv)
+    newSpan.addEventListener('click', addToCompleted)
     document.getElementById("list").appendChild(newDiv)
     
   }
