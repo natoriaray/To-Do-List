@@ -83,6 +83,3 @@ function addToList() {
     
   }
 }
-
-//take deleted button off completed divs 
-//change css gon ADD function
