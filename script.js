@@ -13,13 +13,13 @@ var tagNumber = 0;
 
 var addToCompleted = function() {
   var thisSpanId = this.id;
-  var divId = this.id - 1.1;
+  var divId = this.id - 0.1;
+  var deleteBtnId = divId + 1;
+  
   var completedDiv = document.getElementById(divId);
-  
+ 
+  document.getElementById(deleteBtnId).remove();
   document.getElementById("completedList").appendChild(completedDiv);
-  
-  console.log(completedDiv)
-  //this.
 }
 
 //use the tagnumbers to delete a div 
@@ -72,10 +72,10 @@ function addToList() {
     tagNumber = Number(tagNumber) + 1;
     newDiv.id = tagNumber;
     newBtn.id = Number(newDiv.id) + 1; //used when div in deleted
-    newSpan.id = Number(newBtn.id) + 0.1; //used to move div to completed list
+    newSpan.id = Number(newDiv.id) + 0.1; //used to move div to completed list
     
     tagNumber = Number(tagNumber) + 1;
-    
+    console.log(newBtn.id)
     //add completed div to webpage
     newBtn.addEventListener('click', deleteDiv)
     newSpan.addEventListener('click', addToCompleted)
@@ -83,3 +83,6 @@ function addToList() {
     
   }
 }
+
+//take deleted button off completed divs 
+//change css gon ADD function
